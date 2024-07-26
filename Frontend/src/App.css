@@ -1,0 +1,123 @@
+body {
+    background: rgb(174,226,238);
+    background: radial-gradient(circle, rgba(174,226,238,1) 25%, rgba(4,180,226,1) 100%);
+    font-family:'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  .split-screen {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  .left-side{
+    background-color: #94A3A6;
+    text-align: left;
+  }
+  .right-side{
+    background-color:  #CFD8D9;
+    text-align: center;
+  }
+  .left-side, .right-side {
+    
+    padding: 20px;
+    overflow-y: auto;
+    transition: width 0.3s;
+  }
+  
+  .auth-options button {
+    display: block;
+    margin: 10px 0;
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .auth-options button:hover {
+    background-color: #002244;
+  }
+  
+  .upload-section input[type="file"], .upload-section input[type="text"] {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+  }
+  
+  .upload-section button {
+    display: block;
+    margin: 10px 0;
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .upload-section button:hover {
+    background-color: #002244;
+  }
+  
+  .footer {
+    height: 8%;
+    padding: 10px;
+    background: #f0f0f0;
+    margin-top: 10px;
+  }
+  
+  .footer-content {
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footer-content a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .footer-content span {
+    margin: 0 10px;
+  }
+  
+  .divider {
+    width: 10px;
+    background: rgb(66, 212, 248);
+    cursor: ew-resize;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  
+  .footer-content a:hover {
+    text-decoration:underline;
+    color: chocolate;
+  }
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .split-screen {
+      flex-direction: column;
+    }
+    
+    .left-side, .right-side {
+      width: 100% !important;
+    }
+  
+    .divider {
+      display: none;
+    }
+  }
+  
