@@ -20,14 +20,12 @@ body{
     font-weight: bold;
     border-radius: 5px;
     background: #196BCA;
-    background-color: linear-gradient(to right,#196BCA ,#0b4adc);
-    background: radial-gradient(circle, rgba(4,180,226,1) 23%, rgba(83,177,199,1) 93%);
     cursor: pointer;
 }
 
 .login-container button:hover{
- background: linear-gradient(to right,#5482d0 ,#7d5ee3);
- background-color: #5482d0;
+  background: rgb(0,118,255);
+  background: radial-gradient(circle, rgba(0,118,255,1) 36%, rgba(25,107,202,1) 85%);
 }
 .login-container button:active{
  transform: scale(0.95);

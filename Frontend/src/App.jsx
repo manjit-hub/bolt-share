@@ -1,7 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './App.css';
 import DisplayUpload from './DisplayUpload';
 import DisplayUser from './DisplayUser'
+import { toast } from 'react-toastify'; 
+import axios from 'axios';
+
+// IMPORT FILES:
+import './App.css';
+
+// CONFIG
 
 function App() {
   const [leftWidth, setLeftWidth] = useState(40); // Initial width of left-side as 40%
@@ -65,7 +71,7 @@ function App() {
           <a href="https://linkedin.com/in/manjit-majhi">Manjit Majhi</a>
           </p>
           <p>Thank You 🤗</p>
-          <a href="https://github.com/your-github-repo">Github</a>
+          <a href="https://github.com/manjit-hub/bolt-share.git">Github</a>
         </div>
       </div>
     </div>

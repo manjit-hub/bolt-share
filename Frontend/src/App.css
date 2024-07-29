@@ -11,6 +11,7 @@ body {
     flex-direction: column;
     height: 100vh;
     padding: 20px;
+    padding-bottom: 0;
   }
   
   .split-screen {
@@ -70,7 +71,6 @@ body {
   
   .footer {
     height: 8%;
-    padding: 10px;
     background: #f0f0f0;
     margin-top: 10px;
   }
@@ -87,9 +87,9 @@ body {
     text-decoration: none;
     color: #000;
   }
-  
-  .footer-content span {
-    margin: 0 10px;
+
+  .footer-content p{
+    margin: 3px;
   }
   
   .divider {

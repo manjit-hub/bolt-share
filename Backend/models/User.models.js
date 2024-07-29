@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import './fileConverted.models'
+import File from './File.models.js'
 const userSchema = new mongoose.Schema({
     name :{
         type:String,
@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
     },
     file: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: FileConverted
+        ref: File
     }
 })
 
