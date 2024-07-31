@@ -1,14 +1,13 @@
 import mongoose from 'mongoose';
 
 const fileSchema = new mongoose.Schema({
-    fileName: {
+    name: {
         type: String,
         required: true,
         unique: true,
     },
     url: {
         type: String,
-        required: true,
         unique: true
     },
     path: {

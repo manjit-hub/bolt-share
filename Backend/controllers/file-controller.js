@@ -2,7 +2,7 @@ import File from '../models/File.models.js';
 
 const uploadFile = async (req, res) => {
     console.log("Uploading File!");
-    console.log(req);
+    // console.log(req);
     const fileObj = {
         path : req.file.path,
         name : req.file.originalname,
@@ -10,7 +10,6 @@ const uploadFile = async (req, res) => {
 
     try{
         const file = await File.create(fileObj);
-        console.log()
         res.status(200).json({
             path : `${process.env.BACKEND_URL}/file/${file._id}`,
         })
