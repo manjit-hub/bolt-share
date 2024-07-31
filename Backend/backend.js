@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 // IMPORT FILE:
 import { DBConnection } from './database/db.js';
@@ -9,6 +10,11 @@ import routes from './routes/routes.js';
 // CONFIG
 dotenv.config();
 const app = express();
+
+//CORS 
+app.use(cors());
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 
 // DB Connection
 DBConnection();

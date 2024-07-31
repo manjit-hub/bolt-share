@@ -11,7 +11,7 @@ const DBConnection = async () => {
     }
 
     try {
-        await mongoose.connect(DB_URI, { useNewUrlParser: true }); // ensure that Mongoose uses the new parser.
+        await mongoose.connect(DB_URI); // ensure that Mongoose uses the new parser.
         console.log("Database Connected Successfully.");
     } catch (error) {
         console.log("Error while connecting to Database", error.message);
