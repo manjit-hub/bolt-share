@@ -1,35 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react'; //useRef is used for 'HOOK'.
+import React, { useState, useRef } from 'react';
 import { toast } from 'react-toastify';
-import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile } from '@fortawesome/free-solid-svg-icons';
-
-//IMPORT FILES:
-import './DisplayUpload.css';
 import uploadFile from './middlewares/uploadFile';
-
-//CONFIG: 
+import './DisplayUpload.css';
 
 const DisplayUpload = () => {
   const [converted, setConverted] = useState(false);
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState(null);
+  const [url, setUrl] = useState('Text to copy');
   const textRef = useRef(null);
   const fileInputRef = useRef(null);
-  
-  useEffect(() => {
-    const getImage = async() =>{
-      if(file){
-        const data = new FormData();
-        data.append("name", file.name); // Store in it's respective format
-        data.append("file", file); // Store in Binary Format
-
-        const response = await uploadFile(data);
-        // console.log("USE EFFECT");
-        // console.log(response);
-      }
-    }
-    getImage();
-  },[file]); // It will re-render when there will be changes in 'file'
 
   const copyToClipboard = () => {
     let copyText = textRef.current.value;
@@ -41,52 +22,66 @@ const DisplayUpload = () => {
   };
 
   const handleConvert = async () => {
-    if(!file){
-      console.log("Please select a file");
+    if (!file) {
       toast.error("Please select a file");
-    } 
-    else{
-      try{
-        const data = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/convert`);
-        const {success , URL} = data;
-        if(success){
+    } else {
+      try {
+        const data = new FormData();
+        data.append("name", file.name);
+        data.append("file", file);
+
+        console.log("FormData:", data);  // Log the FormData object
+
+        const response = await uploadFile(data);
+        console.log(response);  // Add this line to check the response in the console
+        const { success, path } = response;
+        if (success) {
           setConverted(true);
-          textRef.current.value = URL;
-        }
-        else{
+          setUrl(path);
+          if (textRef.current) {
+            textRef.current.value = path;
+          }
+        } else {
           toast.error("Failed to convert");
         }
-      } catch(error){
-        console.error(error);
+      } catch (error) {
+        console.error("Error during conversion:", error.message);
       }
     }
   };
 
   const handleCancel = () => {
     setConverted(false);
-    textRef.current.value = "Text to copy";
+    setUrl("Text to copy");
+    setFile(null);
+    if (textRef.current) {
+      textRef.current.value = "Text to copy";
+    }
   };
 
-  const handleUpload = () =>{
+  const handleUpload = () => {
     fileInputRef.current.click();
   };
 
-  const handleInputChange = (e) =>{
-    setFile(e.target.files[0]);
-  }
+  const handleInputChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    console.log("Selected File:", selectedFile);  // Log the selected file
+  };
+
   return (
     <div className='display-upload'>
       <h1>⚡BOLT SHARING⚡</h1>
       <p>Share Images & Documents upto 10MB</p>
-      <input className="inputFile" type="file" ref={fileInputRef}  onChange={handleInputChange}/>
+      <input className="inputFile" type="file" ref={fileInputRef} onChange={handleInputChange} />
       <button className='upload' onClick={handleUpload}>
-      <FontAwesomeIcon icon={faFile} style={{color: "#adff2f", marginRight:"5px", height:"23px"}} />
-      UPLOAD
+        <FontAwesomeIcon icon={faFile} style={{ color: "#adff2f", marginRight: "5px", height: "23px" }} />
+        UPLOAD
       </button>
       {converted ? (
         <div className="converted">
           <input
-            value="Text to copy"
+            value={url}
             disabled
             type="text"
             ref={textRef}
