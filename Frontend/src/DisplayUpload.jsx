@@ -1,14 +1,15 @@
 import React, { useState, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFile } from '@fortawesome/free-solid-svg-icons';
+import { faFile, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import uploadFile from './middlewares/uploadFile';
 import './DisplayUpload.css';
 
-const DisplayUpload = () => {
+const DisplayUpload = ({ theme }) => {
   const [converted, setConverted] = useState(false);
   const [file, setFile] = useState(null);
   const [url, setUrl] = useState('Text to copy');
+  const [loading, setLoading] = useState(false);
   const textRef = useRef(null);
   const fileInputRef = useRef(null);
 
@@ -25,6 +26,7 @@ const DisplayUpload = () => {
     if (!file) {
       toast.error("Please select a file");
     } else {
+      setLoading(true);
       try {
         const data = new FormData();
         data.append("name", file.name);
@@ -46,6 +48,8 @@ const DisplayUpload = () => {
         }
       } catch (error) {
         console.error("Error during conversion:", error.message);
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -70,31 +74,44 @@ const DisplayUpload = () => {
   };
 
   return (
-    <div className='display-upload'>
-      <h1>⚡BOLT SHARING⚡</h1>
-      <p>Share Images & Documents upto 10MB</p>
-      <input className="inputFile" type="file" ref={fileInputRef} onChange={handleInputChange} />
-      <button className='upload' onClick={handleUpload}>
-        <FontAwesomeIcon icon={faFile} style={{ color: "#adff2f", marginRight: "5px", height: "23px" }} />
-        UPLOAD
-      </button>
-      {converted ? (
-        <div className="converted">
-          <input
-            value={url}
-            disabled
-            type="text"
-            ref={textRef}
-          />
-          <button onClick={copyToClipboard}>Copy</button>
-          <button onClick={handleCancel}>Cancel</button>
-        </div>
-      ) : (
-        <div className="notConverted">
-          <button onClick={handleConvert}>Convert</button>
-          <button onClick={handleCancel}>Cancel</button>
-        </div>
-      )}
+    <div className={`outer ${theme}`}>
+      <div className='display-upload'>
+        <h1>⚡BOLT SHARING⚡</h1>
+        <p>Share Images & Documents up to 10MB</p>
+        <input className="inputFile" type="file" ref={fileInputRef} onChange={handleInputChange} />
+        <button className='upload' onClick={handleUpload}>
+          <FontAwesomeIcon icon={faFile} style={{ color: "#adff2f", marginRight: "5px", height: "23px" }} />
+          UPLOAD
+        </button>
+
+        {file && (
+          <div className="file-details">
+            <p><strong>File Name:</strong> {file.name}</p>
+            <p><strong>File Size:</strong> {(file.size / 1024 / 1024).toFixed(2)} MB</p>
+            <p><strong>File Type:</strong> {file.type}</p>
+          </div>
+        )}
+
+        {converted ? (
+          <div className="converted">
+            <input
+              value={url}
+              disabled
+              type="text"
+              ref={textRef}
+            />
+            <button onClick={copyToClipboard}>Copy</button>
+            <button onClick={handleCancel}>Cancel</button>
+          </div>
+        ) : (
+          <div className="notConverted">
+            <button onClick={handleConvert} disabled={loading}>
+              {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Convert'}
+            </button>
+            <button onClick={handleCancel}>Cancel</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
