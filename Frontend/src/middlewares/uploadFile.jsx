@@ -1,15 +1,19 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const uploadFile = async (data) => {
+const uploadFile = async (formData) => {
   try {
-    console.log("Entered Upload");
-    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/upload`, data);
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/upload`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+      withCredentials: true
+    });
     return response.data;
   } catch (error) {
-    console.error("Error Uploading File!", error.message);
+    console.error('Error uploading file:', error.response.data);
     toast.error("Error Uploading File!");
-    return { success: false };  // Return a default object in case of an error
+    return { success: false };
   }
 };
 

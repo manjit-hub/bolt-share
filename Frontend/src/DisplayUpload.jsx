@@ -31,9 +31,9 @@ const DisplayUpload = ({ theme }) => {
         const data = new FormData();
         data.append("name", file.name);
         data.append("file", file);
-
+  
         console.log("FormData:", data);  // Log the FormData object
-
+  
         const response = await uploadFile(data);
         console.log(response);  // Add this line to check the response in the console
         const { success, path } = response;
@@ -53,6 +53,7 @@ const DisplayUpload = ({ theme }) => {
       }
     }
   };
+  
 
   const handleCancel = () => {
     setConverted(false);

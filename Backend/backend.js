@@ -24,10 +24,15 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // CORS 
-app.use(cors({
-    origin: ['https://bolt-share.vercel.app/', 'http://localhost:5173'],
-    credentials: true
-}));
+const corsOptions = {
+    origin: ['https://bolt-share.vercel.app', 'http://localhost:5173'],
+    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type,Authorization'
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Enable preflight for all routes
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
