@@ -13,13 +13,17 @@ const uploadFile = async (req, res) => {
         path: req.file.path,
         name: req.file.originalname,
     };
-    console.log("File Object:", fileObj);  // Log the file object to ensure it's correct
+    // console.log("File Object:", fileObj);  // Log the file object to ensure it's correct
 
     try {
         const file = await File.create(fileObj);
-        console.log(`${process.env.BACKEND_URL}/file/${file._id}`);
+        const urlGen = `${process.env.BACKEND_URL}/file/${file._id}`;
+        // console.log(urlGen);
+        file.url = urlGen;
+        await file.save();
+
         res.status(200).json({
-            path: `${process.env.BACKEND_URL}/file/${file._id}`,
+            path: urlGen,
             success: true,
         });
     } catch (error) {

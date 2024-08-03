@@ -13,6 +13,11 @@ const fileSchema = new mongoose.Schema({
   downloadCount: {
     type: Number,
     default: 0
+  },
+  url: {
+    type: String,
+    default: () => new mongoose.Types.ObjectId().toString(), // Generate a unique ObjectId string
+    unique: true
   }
 }, { timestamps: true });
 
