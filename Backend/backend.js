@@ -1,6 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import fs from 'fs';
+import path from 'path';
 
 // IMPORT FILE:
 import { DBConnection } from './database/db.js';
@@ -10,6 +12,12 @@ import routes from './routes/routes.js';
 // CONFIG
 dotenv.config();
 const app = express();
+
+// Ensure uploads directory exists
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir);
+}
 
 //CORS 
 app.use(cors({
