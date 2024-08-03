@@ -12,7 +12,10 @@ dotenv.config();
 const app = express();
 
 //CORS 
-app.use(cors());
+app.use(cors({
+    origin : ['https://bolt-share.vercel.app/','http://localhost:5173'],
+    credentials: true
+}));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
