@@ -25,7 +25,9 @@ const DisplayUpload = ({ theme }) => {
   const handleConvert = async () => {
     if (!file) {
       toast.error("Please select a file");
-    } else {
+    } else if((file.size / 1024 / 1024).toFixed(2) >= 10){
+      toast.error("File size exceeding 10MB");
+    }else {
       setLoading(true);
       try {
         const data = new FormData();
