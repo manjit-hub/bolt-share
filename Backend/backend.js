@@ -26,7 +26,7 @@ app.get('/', (req,res) =>{ // First call to '/' route will be here
     res.send("Backend is running!");
 })
 
-app.use('/', routes); // Rest '/' route calls will be forwarded here: Agar '/' badd kuch hoga to 
+app.use('/', routes); // Rest '/' route calls will be forwarded here: Agar '/' badd kuch hoga to routes me redirect hoga
 
 const port = process.env.PORT;
 app.listen(port, () =>{
