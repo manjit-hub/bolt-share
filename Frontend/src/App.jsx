@@ -66,7 +66,7 @@ function App() {
         <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} />
         {theme === 'light' ? ' Dark Mode' : ' Light Mode'}
       </button>
-      <DisplayUpload theme={theme} />
+      <DisplayUpload theme={theme} className="displayUpload"/>
       <div className="footer">
         <hr />
         <div className="footer-content">

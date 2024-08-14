@@ -97,14 +97,16 @@ const DisplayUpload = ({ theme }) => {
 
         {converted ? (
           <div className="converted">
-            <input
+            <input className='outputURL'
               value={url}
               disabled
               type="text"
               ref={textRef}
             />
+            <div className="btnConverted">
             <button onClick={copyToClipboard}>Copy</button>
             <button onClick={handleCancel}>Cancel</button>
+            </div>
           </div>
         ) : (
           <div className="notConverted">

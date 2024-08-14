@@ -130,33 +130,45 @@ body.light .theme-toggle:hover {
 @media screen and (max-width: 1080px) {
   .app-container {
     padding: 10px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-bottom: 5%;
+    align-items: center;
   }
 
+  .displayUpload{
+    height: 80%;
+  }
   .theme-toggle {
-    top: 10px;
-    right: 10px;
+    top: 5%;
+    right: 10%;
     padding: 5px 10px;
   }
 
   .footer {
     height: 10%;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 5%;
+    padding-bottom: 5%;
+    width: 90%;
   }
 
   .footer-content {
-    flex-direction: column;
+    /* padding-top: 10%; */
+    flex-direction: row;
+    align-content: center;
     text-align: center;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .footer-content p {
-    margin: 5px 0;
+    display: flex;
+    align-items: center;
   }
 
   .outer {
     height: 100%;
-    width: 100%;
+    width: 90%;
   }
 }
