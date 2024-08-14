@@ -136,9 +136,10 @@ body.light .theme-toggle:hover {
     align-items: center;
   }
 
-  .displayUpload{
+  .displayUpload {
     height: 80%;
   }
+
   .theme-toggle {
     top: 10%;
     right: 10%;
@@ -146,29 +147,24 @@ body.light .theme-toggle:hover {
   }
 
   .footer {
-    height: 10%;
-    margin-top: 5px;
-    margin-bottom: 5%;
-    padding-bottom: 5%;
-    width: 90%;
+    height: auto; /* Set height to auto to adjust based on content */
+    margin-top: 10px;
+    padding: 10px; /* Add padding to give enough space inside the footer */
+    width: 100%; /* Ensure the footer takes the full width of the screen */
+    display: flex;
+    justify-content: center; /* Center the content */
+    align-items: center;
+    flex-direction: column; /* Stack items vertically */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding is included in the element's width and height */
   }
 
   .footer-content {
-    /* padding-top: 10%; */
-    flex-direction: row;
-    align-content: center;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
+    display: block; /* Display content in block layout */
   }
 
-  .footer-content p {
-    display: flex;
-    align-items: center;
-  }
-
-  .outer {
-    height: 100%;
-    width: 90%;
+  .footer-content p, .footer-content a {
+    margin: 5px 0; /* Space between text and links */
+    display: block; /* Ensure each element takes up its own line */
   }
 }
