@@ -147,24 +147,30 @@ body.light .theme-toggle:hover {
   }
 
   .footer {
-    height: auto; /* Set height to auto to adjust based on content */
+    height: auto; /* Automatically adjust based on content */
     margin-top: 10px;
-    padding: 10px; /* Add padding to give enough space inside the footer */
-    width: 100%; /* Ensure the footer takes the full width of the screen */
+    padding: 10px;
+    width: 100%;
     display: flex;
-    justify-content: center; /* Center the content */
-    align-items: center;
-    flex-direction: column; /* Stack items vertically */
+    justify-content: space-between; /* Space elements evenly across the row */
+    align-items: center; /* Center vertically */
     text-align: center;
-    box-sizing: border-box; /* Ensure padding is included in the element's width and height */
+    box-sizing: border-box;
   }
 
   .footer-content {
-    display: block; /* Display content in block layout */
+    display: flex; /* Use flex to align items in a single row */
+    justify-content: space-between; /* Distribute elements evenly */
+    align-items: center; /* Vertically center the items */
+    width: 100%; /* Ensure footer content takes up full width */
+    padding: 0 10px; /* Padding on left and right for spacing */
   }
 
   .footer-content p, .footer-content a {
-    margin: 5px 0; /* Space between text and links */
-    display: block; /* Ensure each element takes up its own line */
+    margin: 0 10px; /* Add space between elements */
+  }
+
+  .footer-content a {
+    white-space: nowrap; /* Prevent text from wrapping to the next line */
   }
 }
