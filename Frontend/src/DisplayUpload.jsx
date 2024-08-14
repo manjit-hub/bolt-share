@@ -79,7 +79,7 @@ const DisplayUpload = ({ theme }) => {
   return (
     <div className={`outer ${theme}`}>
       <div className='display-upload'>
-        <h1>⚡BOLT SHARING⚡</h1>
+        <h2>⚡BOLT SHARING⚡</h2>
         <p>Share Images & Documents up to 10MB</p>
         <input className="inputFile" type="file" ref={fileInputRef} onChange={handleInputChange} />
         <button className='upload' onClick={handleUpload}>

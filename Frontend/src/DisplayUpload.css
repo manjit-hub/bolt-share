@@ -73,19 +73,29 @@ textarea {
   font-family: Trebuchet MS;
 }
 
-.file-details p {
-  margin: 5px 0;
+.converted {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-.converted input {
-  margin-bottom: 10px;
-  padding: 5px;
+.outputURL {
+  flex: 1; 
+  margin-right: 10px;
+  align-items: center; 
 }
 
-.converted button {
-  margin: 5px;
+.btnConverted {
+  display: flex;
+  gap: 10px; 
+  
+}
+
+.btnConverted button {
   padding: 5px 10px;
   border-radius: 3px;
+  background-color: rgb(192, 232, 255);
   border: unset;
   cursor: pointer;
 }

@@ -140,7 +140,7 @@ body.light .theme-toggle:hover {
     height: 80%;
   }
   .theme-toggle {
-    top: 5%;
+    top: 10%;
     right: 10%;
     padding: 5px 10px;
   }
